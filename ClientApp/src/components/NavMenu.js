@@ -10,6 +10,9 @@ import {
 	NavItem,
 	NavLink,
 } from "react-bootstrap";
+import { FaSearch } from "react-icons/fa";
+import { BiMenu, BiHelpCircle } from "react-icons/bi";
+import { VscAccount, VscSettingsGear } from "react-icons/vsc";
 import { NavbarToggler } from "reactstrap";
 import { Link } from "react-router-dom";
 import "./NavMenu.css";
@@ -40,23 +43,32 @@ export class NavMenu extends Component {
 					light
 				>
 					<Container>
+						<NavItem>
+							<NavLink tag={Link} className="text-dark" to="/">
+								<Button>
+									<BiMenu />
+								</Button>
+							</NavLink>
+						</NavItem>
 						<NavbarBrand tag={Link} to="/">
 							rmail.com
 						</NavbarBrand>
 						<NavItem>
 							<NavLink tag={Link} className="text-dark" to="/">
 								<Form inline>
+									<div>
+										<Button variant="outline-primary">
+											<FaSearch />
+										</Button>
+									</div>
 									<FormControl
-										type="text"
+										type="dropdown"
 										placeholder="Search Mail"
-										className="mr-sm-2"
+										className="mr-lg-2"
 										onChange={this.changeSearchText}
 										value={this.state.searchtext}
 										onClick={this.findBooks}
 									/>
-									<Button variant="outline-primary">
-										Search
-									</Button>
 								</Form>
 							</NavLink>
 						</NavItem>
@@ -76,7 +88,7 @@ export class NavMenu extends Component {
 										className="text-dark"
 										to="/"
 									>
-										My Account
+										<VscAccount />
 									</NavLink>
 								</NavItem>
 								<NavItem>
@@ -85,7 +97,7 @@ export class NavMenu extends Component {
 										className="text-dark"
 										to="/counter"
 									>
-										Settings
+										<VscSettingsGear />
 									</NavLink>
 								</NavItem>
 								<NavItem>
@@ -94,7 +106,7 @@ export class NavMenu extends Component {
 										className="text-dark"
 										to="/fetch-data"
 									>
-										Support
+										<BiHelpCircle />
 									</NavLink>
 								</NavItem>
 							</ul>
